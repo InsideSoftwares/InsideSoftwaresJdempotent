@@ -1,0 +1,5 @@
+br.com.insidesoftwares.jdempotent.redis.configuration.RedisConfigProperties
+br.com.insidesoftwares.jdempotent.redis.configuration.RedisSentinelConfiguration
+org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+br.com.insidesoftwares.jdempotent.redis.configuration.RedisEnvironmentPostProcessor
+br.com.insidesoftwares.jdempotent.redis.configuration.ApplicationConfig
