@@ -1,24 +1,24 @@
 package br.com.insidesoftwares.jdempotent.core.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 /**
  * Wraps the incoming event response
  *
  */
+@Getter
+@NoArgsConstructor
 @SuppressWarnings("serial")
 public class IdempotentResponseWrapper implements Serializable {
 
     private Object response;
 
-    public IdempotentResponseWrapper(){}
-
     public IdempotentResponseWrapper(Object response) {
         this.response = response;
-    }
-
-    public Object getResponse() {
-        return response;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class IdempotentResponseWrapper implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        return response == null ? false : response.equals(obj);
+        return response != null && response.equals(obj);
     }
 
     @Override

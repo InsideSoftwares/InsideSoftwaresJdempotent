@@ -1,32 +1,19 @@
 package br.com.insidesoftwares.jdempotent.core.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.lang.reflect.Field;
 
+@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChainData {
+
     private Field declaredField;
     private Object args;
 
-    public ChainData(){
-    }
-
-    public ChainData(Field declaredField, Object args) {
-        this.declaredField = declaredField;
-        this.args = args;
-    }
-
-    public Field getDeclaredField() {
-        return declaredField;
-    }
-
-    public void setDeclaredField(Field declaredField) {
-        this.declaredField = declaredField;
-    }
-
-    public Object getArgs() {
-        return args;
-    }
-
-    public void setArgs(Object args) {
-        this.args = args;
-    }
 }

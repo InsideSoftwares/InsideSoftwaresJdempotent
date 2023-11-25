@@ -24,23 +24,8 @@ public abstract class AbstractIdempotentRepository implements IdempotentReposito
     }
 
     @Override
-    public void store(IdempotencyKey key, IdempotentRequestWrapper request) {
-        getMap().put(key, new IdempotentRequestResponseWrapper(request));
-    }
-
-    @Override
     public void store(IdempotencyKey key, IdempotentRequestWrapper request,Long ttl, TimeUnit timeUnit) {
         getMap().put(key, new IdempotentRequestResponseWrapper(request));
-    }
-
-    @Override
-    public void setResponse(IdempotencyKey key, IdempotentRequestWrapper request,
-                            IdempotentResponseWrapper idempotentResponse) {
-        if (getMap().containsKey(key)) {
-            IdempotentRequestResponseWrapper requestResponseWrapper = getMap().get(key);
-            requestResponseWrapper.setResponse(idempotentResponse);
-            getMap().put(key, requestResponseWrapper);
-        }
     }
 
     @Override

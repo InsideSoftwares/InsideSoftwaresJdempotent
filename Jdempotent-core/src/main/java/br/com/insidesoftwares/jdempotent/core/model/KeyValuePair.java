@@ -1,29 +1,15 @@
 package br.com.insidesoftwares.jdempotent.core.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class KeyValuePair {
     private String key;
     private Object value;
-
-    public KeyValuePair(){}
-
-    public KeyValuePair(String key, Object value) {
-        this.key = key;
-        this.value = value;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public Object getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
 }

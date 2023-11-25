@@ -44,12 +44,6 @@ public class RedisIdempotentRepository implements IdempotentRepository {
     }
 
     @Override
-    @Deprecated
-    public void store(IdempotencyKey idempotencyKey, IdempotentRequestWrapper request) {
-        valueOperations.set(idempotencyKey.getKeyValue(), prepareValue(request), redisProperties.getExpirationTimeHour(), TimeUnit.HOURS);
-    }
-
-    @Override
     public void store(IdempotencyKey idempotencyKey, IdempotentRequestWrapper request, Long ttl, TimeUnit timeUnit) {
         ttl = ttl == 0 ? redisProperties.getExpirationTimeHour() : ttl;
         valueOperations.set(idempotencyKey.getKeyValue(), prepareValue(request), ttl, timeUnit);
@@ -58,16 +52,6 @@ public class RedisIdempotentRepository implements IdempotentRepository {
     @Override
     public void remove(IdempotencyKey idempotencyKey) {
         redisTemplate.delete(idempotencyKey.getKeyValue());
-    }
-
-    @Override
-    @Deprecated
-    public void setResponse(IdempotencyKey idempotencyKey, IdempotentRequestWrapper request, IdempotentResponseWrapper response) {
-        if (contains(idempotencyKey)) {
-            IdempotentRequestResponseWrapper requestResponseWrapper = valueOperations.get(idempotencyKey);
-            requestResponseWrapper.setResponse(response);
-            valueOperations.set(idempotencyKey.getKeyValue(), prepareValue(request), redisProperties.getExpirationTimeHour(), TimeUnit.HOURS);
-        }
     }
 
     /**

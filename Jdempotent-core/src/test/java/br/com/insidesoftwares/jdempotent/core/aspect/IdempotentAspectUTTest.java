@@ -103,9 +103,7 @@ class IdempotentAspectUTTest {
         verify(joinPoint, times(4)).getSignature();
         verify(signature, times(3)).getMethod();
         verify(joinPoint).getTarget();
-        verify(idempotentRepository, times(0)).store(any(), any());
         verify(joinPoint, times(0)).proceed();
-        verify(idempotentRepository, times(0)).setResponse(any(), any(), any());
         verify(idempotentRepository, times(1)).getResponse(any());
     }
 
@@ -137,10 +135,8 @@ class IdempotentAspectUTTest {
         verify(joinPoint, times(4)).getSignature();
         verify(signature, times(3)).getMethod();
         verify(joinPoint).getTarget();
-        verify(idempotentRepository, times(0)).store(any(), any());
         verify(joinPoint, times(0)).proceed();
         verify(idempotentRepository, times(0)).remove(any());
-        verify(idempotentRepository, times(0)).setResponse(any(), any(), any());
         verify(idempotentRepository, times(0)).getResponse(any());
     }
 
@@ -172,9 +168,7 @@ class IdempotentAspectUTTest {
         verify(joinPoint).getTarget();
         verify(joinPoint).getSignature();
         verify(signature, times(0)).getMethod();
-        verify(idempotentRepository, times(0)).store(any(), any());
         verify(joinPoint, times(0)).proceed();
-        verify(idempotentRepository, times(0)).setResponse(any(), any(), any());
     }
 
     @Test
@@ -205,9 +199,7 @@ class IdempotentAspectUTTest {
         verify(joinPoint, times(4)).getSignature();
         verify(signature, times(3)).getMethod();
         verify(joinPoint).getTarget();
-        verify(idempotentRepository, times(0)).store(any(), any());
         verify(joinPoint, times(0)).proceed();
-        verify(idempotentRepository, times(0)).setResponse(any(), any(), any());
         verify(idempotentRepository, times(0)).remove(any());
     }
 

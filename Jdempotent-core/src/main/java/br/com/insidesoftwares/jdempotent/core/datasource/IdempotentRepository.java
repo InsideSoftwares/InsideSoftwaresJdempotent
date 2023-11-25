@@ -25,13 +25,6 @@ public interface IdempotentRepository {
     IdempotentResponseWrapper getResponse(IdempotencyKey key);
 
     /**
-     * @param key
-     * @param requestObject
-     */
-    void store(IdempotencyKey key, IdempotentRequestWrapper requestObject);
-
-
-    /**
      *
      * @param key
      * @param requestObject
@@ -45,12 +38,6 @@ public interface IdempotentRepository {
      * @param key
      */
     void remove(IdempotencyKey key);
-
-    /**
-     * @param request
-     * @param idempotentResponse
-     */
-    void setResponse(IdempotencyKey key, IdempotentRequestWrapper request, IdempotentResponseWrapper idempotentResponse);
 
     /**
      * @param request

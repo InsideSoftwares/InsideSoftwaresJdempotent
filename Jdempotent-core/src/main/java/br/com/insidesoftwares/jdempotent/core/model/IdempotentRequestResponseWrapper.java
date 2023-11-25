@@ -1,5 +1,10 @@
 package br.com.insidesoftwares.jdempotent.core.model;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 /**
@@ -7,12 +12,13 @@ import java.io.Serializable;
  *  That is a container for idempotent requests and responses
  *
  */
+@Getter
+@Setter
+@NoArgsConstructor
 @SuppressWarnings("serial")
 public class IdempotentRequestResponseWrapper implements Serializable {
     private IdempotentRequestWrapper request;
     private IdempotentResponseWrapper response = null;
-
-    public IdempotentRequestResponseWrapper(){}
 
     public IdempotentRequestResponseWrapper(IdempotentRequestWrapper request) {
         this.request = request;
@@ -21,20 +27,6 @@ public class IdempotentRequestResponseWrapper implements Serializable {
     public IdempotentRequestResponseWrapper(IdempotentRequestWrapper request, IdempotentResponseWrapper response) {
         this.request = request;
         this.response = response;
-    }
-
-    public IdempotentResponseWrapper getResponse() {
-        return response;
-    }
-
-    public void setResponse(IdempotentResponseWrapper response) {
-        synchronized (this) {
-            this.response = response;
-        }
-    }
-
-    public IdempotentRequestWrapper getRequest() {
-        return request;
     }
 
     @Override

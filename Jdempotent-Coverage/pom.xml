@@ -61,6 +61,14 @@
                                 <goals>
                                     <goal>report-aggregate</goal>
                                 </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>br/com/insidesoftwares/jdempotent/core/model/*/**</exclude>
+                                        <exclude>br/com/insidesoftwares/jdempotent/core/config/*/**</exclude>
+                                        <exclude>br/com/insidesoftwares/jdempotent/core/constant/*/**</exclude>
+                                        <exclude>br/com/insidesoftwares/jdempotent/redis/configuration/*/**</exclude>
+                                    </excludes>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>

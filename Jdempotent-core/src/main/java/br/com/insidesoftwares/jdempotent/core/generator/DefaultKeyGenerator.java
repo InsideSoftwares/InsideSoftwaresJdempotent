@@ -15,7 +15,6 @@ import java.security.MessageDigest;
  */
 public class DefaultKeyGenerator implements KeyGenerator {
 
-    private static final Logger logger = LoggerFactory.getLogger(DefaultKeyGenerator.class);
     private final String appName;
 
     public DefaultKeyGenerator() {

@@ -1,5 +1,9 @@
 package br.com.insidesoftwares.jdempotent.core.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
@@ -11,12 +15,12 @@ import java.util.stream.Collectors;
  * Wraps the incoming event value
  *
  */
+@Setter
+@Getter
+@NoArgsConstructor
 @SuppressWarnings("serial")
 public class IdempotentRequestWrapper implements Serializable {
     private List<Object> request;
-
-    public IdempotentRequestWrapper(){
-    }
 
     public IdempotentRequestWrapper(Object request) {
         this.request = Collections.singletonList(request);
@@ -24,10 +28,6 @@ public class IdempotentRequestWrapper implements Serializable {
 
     public IdempotentRequestWrapper(List<Object> request) {
         this.request = request;
-    }
-
-    public List<Object> getRequest() {
-        return request;
     }
 
     @Override
@@ -45,10 +45,10 @@ public class IdempotentRequestWrapper implements Serializable {
         StringBuilder requestBuilder = new StringBuilder();
         this.request.stream()
                 .map(Object::toString)
-                .collect(Collectors.toList()).stream()
+                .toList().stream()
                 .sorted(String::compareTo)
                 .forEach(requestBuilder::append);
-        System.out.println(requestBuilder.toString());
-        return String.format("IdempotentRequestWrapper [request=%s]", requestBuilder.toString());
+
+        return String.format("IdempotentRequestWrapper [request=%s]", requestBuilder);
     }
 }

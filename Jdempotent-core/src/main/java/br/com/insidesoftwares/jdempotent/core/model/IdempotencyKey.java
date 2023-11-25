@@ -1,5 +1,10 @@
 package br.com.insidesoftwares.jdempotent.core.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
@@ -7,24 +12,13 @@ import java.io.Serializable;
  * Wraps the combine of application name, listener name and incoming event value hash
  *
  */
+@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class IdempotencyKey implements Serializable {
 
     private String keyValue;
-
-    public IdempotencyKey() {
-    }
-
-    public IdempotencyKey(String keyValue) {
-        this.keyValue = keyValue;
-    }
-
-    public String getKeyValue() {
-        return keyValue;
-    }
-
-    public void setKeyValue(String keyValue) {
-        this.keyValue = keyValue;
-    }
 
     @Override
     public int hashCode() {
